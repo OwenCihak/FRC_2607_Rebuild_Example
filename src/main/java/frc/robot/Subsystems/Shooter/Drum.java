@@ -72,14 +72,22 @@ public class Drum extends MechanismBase<AngularVelocity>{
     }
 
     public void control(){
-        if(state == DrumState.SHOOTING){
-            shootingControl();
-        }
-        else if(state == DrumState.FERRYING){
-            ferryingControl();
-        }
-        else if(state == DrumState.OFF){
-            offControl();
+        switch (state) {
+            case SHOOTING:
+                shootingControl();
+                break;
+        
+            case FERRYING:
+                ferryingControl();
+                break;
+
+            case OFF:
+                offControl();
+                break;
+
+            default:
+                offControl();
+                break;
         }
     }
 

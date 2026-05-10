@@ -97,20 +97,30 @@ public class Hood extends MechanismBase<Angle>{
     }
 
     public void control(){ 
-        if(state == HoodState.SHOOTING){
-            shootingControl();
-        }
-        else if(state == HoodState.FERRYING){
-            ferryingControl();
-        }
-        else if(state == HoodState.MIN){
-            minControl();
-        }
-        else if(state == HoodState.MAX){
-            maxControl();
-        }
-        else{
-            offControl();
+        switch (state) {
+            case SHOOTING:
+                shootingControl();
+                break;
+        
+            case FERRYING:
+                ferryingControl();
+                break;
+
+            case MIN:
+                minControl();
+                break;
+
+            case MAX:
+                maxControl();
+                break;
+
+            case OFF:
+                offControl();
+                break;
+
+            default:
+                offControl();
+                break;
         }
     }
 
